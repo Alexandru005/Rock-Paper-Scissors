@@ -1,4 +1,5 @@
-function pickComputerMove() {
+function pickComputerMove() 
+{
     const randomNumber = Math.random();
     if (randomNumber < 1/3) {
       return 'Rock';
@@ -9,7 +10,24 @@ function pickComputerMove() {
     }
   }
 
-  function playGame(playerMove) {
+function displayResult(result, playerMove, computerMove)
+{
+    let html = `<h1>${result}</h1> 
+                <br> 
+                <div class="choise">
+                <h3>You</h3> 
+                <img src="/img/${playerMove}.png">  
+                <h3>-</h3> 
+                <img src="/img/${computerMove}.png"> 
+                <h3>Computer</h3>
+                </div>`;
+
+      document.querySelector('.result').innerHTML =  html;
+
+}
+
+function playGame(playerMove) 
+{
     const computerMove = pickComputerMove();
     let result = '';
   
@@ -38,6 +56,9 @@ function pickComputerMove() {
         result = 'Tie';
       }
     }
-  
-    alert(`You picked ${playerMove}.Computer picked ${computerMove}.${result}`);
-  }
+
+    displayResult(result, playerMove, computerMove);
+}
+
+
+
